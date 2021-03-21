@@ -1,0 +1,1185 @@
+{
+  "contractName": "IMasterChef",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "pid",
+          "type": "uint256"
+        }
+      ],
+      "name": "poolInfo",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "contract IERC20",
+              "name": "lpToken",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "allocPoint",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "lastRewardBlock",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "accBambooPerShare",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct IMasterChef.PoolInfo",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalAllocPoint",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_pid",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "deposit",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_pid\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"deposit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"pid\",\"type\":\"uint256\"}],\"name\":\"poolInfo\",\"outputs\":[{\"components\":[{\"internalType\":\"contract IERC20\",\"name\":\"lpToken\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"allocPoint\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"lastRewardBlock\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"accBambooPerShare\",\"type\":\"uint256\"}],\"internalType\":\"struct IMasterChef.PoolInfo\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalAllocPoint\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/C/Users/user/Documents/GitHub/pandaswap-contracts/contracts/interfaces/IMasterChef.sol\":\"IMasterChef\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/user/Documents/GitHub/pandaswap-contracts/contracts/interfaces/IMasterChef.sol\":{\"keccak256\":\"0xc085789467e8f0b3584b69d8c5bd89035f3fc039e8487b2b13f6edef12bc659c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://83a6cf143ba3f0e0c20f948c940278a49d08955920d2af232fecdf3b6f573972\",\"dweb:/ipfs/QmQDVexeCogbtb8WD1rPLnaohY8Hm8Q1TtRAqrmZ6rTiK5\"]},\"@boringcrypto/boring-solidity/contracts/interfaces/IERC20.sol\":{\"keccak256\":\"0x8004f86e4536cca55b8eeb2621fe18e1ee57d779396ddef50bce5bf70fb59867\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://149f2f758deda74a5e855ff934fe93daadadb583d09440832e908365f9235d29\",\"dweb:/ipfs/QmUsZkg1zhehPbPBbf15Pv5BEnP4eaKMpJ1cBN9LGaZurC\"]},\"@boringcrypto/boring-solidity/contracts/libraries/BoringERC20.sol\":{\"keccak256\":\"0x69f1ccf716991e5d6d64dc0e3bc3828fd1990bc18400d680b1aa1960675daaaa\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://b529d3c0ce62bf9fe78f919076e8bf6a1f06803a8977bcabfde79f1979129a6c\",\"dweb:/ipfs/QmbqHLBPKtSb9wDCrzxeRSRmZJpNdstKjCYXo5EcYEFL4e\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity 0.6.12;\r\npragma experimental ABIEncoderV2;\r\nimport \"@boringcrypto/boring-solidity/contracts/libraries/BoringERC20.sol\";\r\n\r\ninterface IMasterChef {\r\n    using BoringERC20 for IERC20;\r\n    struct UserInfo {\r\n        uint256 amount;     // How many LP tokens the user has provided.\r\n        uint256 rewardDebt; // Reward debt. See explanation below.\r\n    }\r\n\r\n    struct PoolInfo {\r\n        IERC20 lpToken;           // Address of LP token contract.\r\n        uint256 allocPoint;       // How many allocation points assigned to this pool. SUSHI to distribute per block.\r\n        uint256 lastRewardBlock;  // Last block number that SUSHI distribution occurs.\r\n        uint256 accBambooPerShare; // Accumulated SUSHI per share, times 1e12. See below.\r\n    }\r\n\r\n    function poolInfo(uint256 pid) external view returns (IMasterChef.PoolInfo memory);\r\n    function totalAllocPoint() external view returns (uint256);\r\n    function deposit(uint256 _pid, uint256 _amount) external;\r\n}\r\n",
+  "sourcePath": "C:/Users/user/Documents/GitHub/pandaswap-contracts/contracts/interfaces/IMasterChef.sol",
+  "ast": {
+    "absolutePath": "/C/Users/user/Documents/GitHub/pandaswap-contracts/contracts/interfaces/IMasterChef.sol",
+    "exportedSymbols": {
+      "IMasterChef": [
+        3402
+      ]
+    },
+    "id": 3403,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3363,
+        "literals": [
+          "solidity",
+          "0.6",
+          ".12"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:6"
+      },
+      {
+        "id": 3364,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "58:33:6"
+      },
+      {
+        "absolutePath": "@boringcrypto/boring-solidity/contracts/libraries/BoringERC20.sol",
+        "file": "@boringcrypto/boring-solidity/contracts/libraries/BoringERC20.sol",
+        "id": 3365,
+        "nodeType": "ImportDirective",
+        "scope": 3403,
+        "sourceUnit": 9994,
+        "src": "93:75:6",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 3402,
+        "linearizedBaseContracts": [
+          3402
+        ],
+        "name": "IMasterChef",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 3368,
+            "libraryName": {
+              "contractScope": null,
+              "id": 3366,
+              "name": "BoringERC20",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 9993,
+              "src": "207:11:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_BoringERC20_$9993",
+                "typeString": "library BoringERC20"
+              }
+            },
+            "nodeType": "UsingForDirective",
+            "src": "201:29:6",
+            "typeName": {
+              "contractScope": null,
+              "id": 3367,
+              "name": "IERC20",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 9777,
+              "src": "223:6:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IERC20_$9777",
+                "typeString": "contract IERC20"
+              }
+            }
+          },
+          {
+            "canonicalName": "IMasterChef.UserInfo",
+            "id": 3373,
+            "members": [
+              {
+                "constant": false,
+                "id": 3370,
+                "mutability": "mutable",
+                "name": "amount",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3373,
+                "src": "263:14:6",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 3369,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "263:7:6",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 3372,
+                "mutability": "mutable",
+                "name": "rewardDebt",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3373,
+                "src": "337:18:6",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 3371,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "337:7:6",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "UserInfo",
+            "nodeType": "StructDefinition",
+            "scope": 3402,
+            "src": "236:166:6",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "IMasterChef.PoolInfo",
+            "id": 3382,
+            "members": [
+              {
+                "constant": false,
+                "id": 3375,
+                "mutability": "mutable",
+                "name": "lpToken",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3382,
+                "src": "437:14:6",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_IERC20_$9777",
+                  "typeString": "contract IERC20"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 3374,
+                  "name": "IERC20",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 9777,
+                  "src": "437:6:6",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC20_$9777",
+                    "typeString": "contract IERC20"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 3377,
+                "mutability": "mutable",
+                "name": "allocPoint",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3382,
+                "src": "505:18:6",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 3376,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "505:7:6",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 3379,
+                "mutability": "mutable",
+                "name": "lastRewardBlock",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3382,
+                "src": "624:23:6",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 3378,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "624:7:6",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 3381,
+                "mutability": "mutable",
+                "name": "accBambooPerShare",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3382,
+                "src": "712:25:6",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 3380,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "712:7:6",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "PoolInfo",
+            "nodeType": "StructDefinition",
+            "scope": 3402,
+            "src": "410:390:6",
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "1526fe27",
+            "id": 3389,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "poolInfo",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 3385,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3384,
+                  "mutability": "mutable",
+                  "name": "pid",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 3389,
+                  "src": "826:11:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3383,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "826:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "825:13:6"
+            },
+            "returnParameters": {
+              "id": 3388,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3387,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 3389,
+                  "src": "862:27:6",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PoolInfo_$3382_memory_ptr",
+                    "typeString": "struct IMasterChef.PoolInfo"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 3386,
+                    "name": "IMasterChef.PoolInfo",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 3382,
+                    "src": "862:20:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PoolInfo_$3382_storage_ptr",
+                      "typeString": "struct IMasterChef.PoolInfo"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "861:29:6"
+            },
+            "scope": 3402,
+            "src": "808:83:6",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "17caf6f1",
+            "id": 3394,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "totalAllocPoint",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 3390,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "921:2:6"
+            },
+            "returnParameters": {
+              "id": 3393,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3392,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 3394,
+                  "src": "947:7:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3391,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "947:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "946:9:6"
+            },
+            "scope": 3402,
+            "src": "897:59:6",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "e2bbb158",
+            "id": 3401,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "deposit",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 3399,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3396,
+                  "mutability": "mutable",
+                  "name": "_pid",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 3401,
+                  "src": "979:12:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3395,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "979:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3398,
+                  "mutability": "mutable",
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 3401,
+                  "src": "993:15:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3397,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "993:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "978:31:6"
+            },
+            "returnParameters": {
+              "id": 3400,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1018:0:6"
+            },
+            "scope": 3402,
+            "src": "962:57:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3403,
+        "src": "172:850:6"
+      }
+    ],
+    "src": "33:991:6"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/C/Users/user/Documents/GitHub/pandaswap-contracts/contracts/interfaces/IMasterChef.sol",
+      "exportedSymbols": {
+        "IMasterChef": [
+          3402
+        ]
+      },
+      "license": "MIT"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.6",
+            ".12"
+          ]
+        },
+        "id": 3363,
+        "name": "PragmaDirective",
+        "src": "33:23:6"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 3364,
+        "name": "PragmaDirective",
+        "src": "58:33:6"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 9994,
+          "absolutePath": "@boringcrypto/boring-solidity/contracts/libraries/BoringERC20.sol",
+          "file": "@boringcrypto/boring-solidity/contracts/libraries/BoringERC20.sol",
+          "scope": 3403,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 3365,
+        "name": "ImportDirective",
+        "src": "93:75:6"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "documentation": null,
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            3402
+          ],
+          "name": "IMasterChef",
+          "scope": 3403
+        },
+        "children": [
+          {
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "BoringERC20",
+                  "referencedDeclaration": 9993,
+                  "type": "library BoringERC20"
+                },
+                "id": 3366,
+                "name": "UserDefinedTypeName",
+                "src": "207:11:6"
+              },
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "IERC20",
+                  "referencedDeclaration": 9777,
+                  "type": "contract IERC20"
+                },
+                "id": 3367,
+                "name": "UserDefinedTypeName",
+                "src": "223:6:6"
+              }
+            ],
+            "id": 3368,
+            "name": "UsingForDirective",
+            "src": "201:29:6"
+          },
+          {
+            "attributes": {
+              "canonicalName": "IMasterChef.UserInfo",
+              "name": "UserInfo",
+              "scope": 3402,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "overrides": null,
+                  "scope": 3373,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 3369,
+                    "name": "ElementaryTypeName",
+                    "src": "263:7:6"
+                  }
+                ],
+                "id": 3370,
+                "name": "VariableDeclaration",
+                "src": "263:14:6"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "mutability": "mutable",
+                  "name": "rewardDebt",
+                  "overrides": null,
+                  "scope": 3373,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 3371,
+                    "name": "ElementaryTypeName",
+                    "src": "337:7:6"
+                  }
+                ],
+                "id": 3372,
+                "name": "VariableDeclaration",
+                "src": "337:18:6"
+              }
+            ],
+            "id": 3373,
+            "name": "StructDefinition",
+            "src": "236:166:6"
+          },
+          {
+            "attributes": {
+              "canonicalName": "IMasterChef.PoolInfo",
+              "name": "PoolInfo",
+              "scope": 3402,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "mutability": "mutable",
+                  "name": "lpToken",
+                  "overrides": null,
+                  "scope": 3382,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "contract IERC20",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "contractScope": null,
+                      "name": "IERC20",
+                      "referencedDeclaration": 9777,
+                      "type": "contract IERC20"
+                    },
+                    "id": 3374,
+                    "name": "UserDefinedTypeName",
+                    "src": "437:6:6"
+                  }
+                ],
+                "id": 3375,
+                "name": "VariableDeclaration",
+                "src": "437:14:6"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "mutability": "mutable",
+                  "name": "allocPoint",
+                  "overrides": null,
+                  "scope": 3382,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 3376,
+                    "name": "ElementaryTypeName",
+                    "src": "505:7:6"
+                  }
+                ],
+                "id": 3377,
+                "name": "VariableDeclaration",
+                "src": "505:18:6"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "mutability": "mutable",
+                  "name": "lastRewardBlock",
+                  "overrides": null,
+                  "scope": 3382,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 3378,
+                    "name": "ElementaryTypeName",
+                    "src": "624:7:6"
+                  }
+                ],
+                "id": 3379,
+                "name": "VariableDeclaration",
+                "src": "624:23:6"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "mutability": "mutable",
+                  "name": "accBambooPerShare",
+                  "overrides": null,
+                  "scope": 3382,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 3380,
+                    "name": "ElementaryTypeName",
+                    "src": "712:7:6"
+                  }
+                ],
+                "id": 3381,
+                "name": "VariableDeclaration",
+                "src": "712:25:6"
+              }
+            ],
+            "id": 3382,
+            "name": "StructDefinition",
+            "src": "410:390:6"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "functionSelector": "1526fe27",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "poolInfo",
+              "overrides": null,
+              "scope": 3402,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "pid",
+                      "overrides": null,
+                      "scope": 3389,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 3383,
+                        "name": "ElementaryTypeName",
+                        "src": "826:7:6"
+                      }
+                    ],
+                    "id": 3384,
+                    "name": "VariableDeclaration",
+                    "src": "826:11:6"
+                  }
+                ],
+                "id": 3385,
+                "name": "ParameterList",
+                "src": "825:13:6"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "overrides": null,
+                      "scope": 3389,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct IMasterChef.PoolInfo",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "IMasterChef.PoolInfo",
+                          "referencedDeclaration": 3382,
+                          "type": "struct IMasterChef.PoolInfo"
+                        },
+                        "id": 3386,
+                        "name": "UserDefinedTypeName",
+                        "src": "862:20:6"
+                      }
+                    ],
+                    "id": 3387,
+                    "name": "VariableDeclaration",
+                    "src": "862:27:6"
+                  }
+                ],
+                "id": 3388,
+                "name": "ParameterList",
+                "src": "861:29:6"
+              }
+            ],
+            "id": 3389,
+            "name": "FunctionDefinition",
+            "src": "808:83:6"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "functionSelector": "17caf6f1",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "totalAllocPoint",
+              "overrides": null,
+              "scope": 3402,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3390,
+                "name": "ParameterList",
+                "src": "921:2:6"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "overrides": null,
+                      "scope": 3394,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 3391,
+                        "name": "ElementaryTypeName",
+                        "src": "947:7:6"
+                      }
+                    ],
+                    "id": 3392,
+                    "name": "VariableDeclaration",
+                    "src": "947:7:6"
+                  }
+                ],
+                "id": 3393,
+                "name": "ParameterList",
+                "src": "946:9:6"
+              }
+            ],
+            "id": 3394,
+            "name": "FunctionDefinition",
+            "src": "897:59:6"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "functionSelector": "e2bbb158",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "deposit",
+              "overrides": null,
+              "scope": 3402,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_pid",
+                      "overrides": null,
+                      "scope": 3401,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 3395,
+                        "name": "ElementaryTypeName",
+                        "src": "979:7:6"
+                      }
+                    ],
+                    "id": 3396,
+                    "name": "VariableDeclaration",
+                    "src": "979:12:6"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_amount",
+                      "overrides": null,
+                      "scope": 3401,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 3397,
+                        "name": "ElementaryTypeName",
+                        "src": "993:7:6"
+                      }
+                    ],
+                    "id": 3398,
+                    "name": "VariableDeclaration",
+                    "src": "993:15:6"
+                  }
+                ],
+                "id": 3399,
+                "name": "ParameterList",
+                "src": "978:31:6"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3400,
+                "name": "ParameterList",
+                "src": "1018:0:6"
+              }
+            ],
+            "id": 3401,
+            "name": "FunctionDefinition",
+            "src": "962:57:6"
+          }
+        ],
+        "id": 3402,
+        "name": "ContractDefinition",
+        "src": "172:850:6"
+      }
+    ],
+    "id": 3403,
+    "name": "SourceUnit",
+    "src": "33:991:6"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.12+commit.27d51765.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-03-21T21:12:05.413Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
