@@ -57,8 +57,15 @@ contract MasterChef is Ownable {
     }
     // The SUSHI TOKEN!
     BambooToken public bamboo;
-    // Dev address.
-    address public devaddr;
+
+    // XXXXX adjusted dev payout to 5 addresses, split, rather than one single address
+    // Dev addresses.
+    address public devaddr1;
+    address public devaddr2;
+    address public devaddr3;
+    address public devaddr4;
+    address public devaddr5;
+
     // Block number when bonus SUSHI period ends.
     uint256 public bonusEndBlock;
     // SUSHI tokens created per block.
