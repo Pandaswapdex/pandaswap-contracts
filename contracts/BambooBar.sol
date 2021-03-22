@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 // BambooBar is the coolest bar in town. You come in with some Bamboo, and leave with more! The longer you stay, the more Bamboo you get.
 //
 // This contract handles swapping to and from xBamboo, PandaSwap's staking token.
-contract BambooBar is ERC20("BambooBar", "xSUSHI"){
+contract BambooBar is ERC20("BambooBar", "sBAMBOO"){
     using SafeMath for uint256;
     IERC20 public bamboo;
 
