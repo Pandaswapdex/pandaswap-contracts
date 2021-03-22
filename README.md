@@ -1,23 +1,22 @@
-# SushiSwap
+# Pandaswap Smart Contracts
 
-https://sushi.com/
+### Website
+https://pandaswap.exchange/
 
-## Deployed Contracts
+### Development
 
-https://dev.sushi.com/sushiswap/contracts
+    git clone THIS_REPOS_LINK
+    >>>...
+    npm install
+    >>>...
+    truffle develop
+    >>>...
+    truffle migrate 
+    
 
-## Docs
 
-[Development](docs/DEVELOPMENT.md)
+### Docs
+[Medium](https://medium.com/)
 
-[Deployment](docs/DEPLOYMENT.md)
-
-[History](docs/HISTORY.md)
-
-## Security
-
-[Security Policy](SECURITY.md)
-
-## License
-
+### License
 [MIT](LICENSE.txt)
