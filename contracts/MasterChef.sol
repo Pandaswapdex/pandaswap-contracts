@@ -85,13 +85,27 @@ contract MasterChef is Ownable {
 
     constructor(
         BambooToken _bamboo,
-        address _devaddr,
+        
+        // XXXXX adjusted dev payout to 5 addresses, split, rather than one single address
+        address _devaddr1,
+        address _devaddr2,
+        address _devaddr3,
+        address _devaddr4,
+        address _devaddr5,
+
         uint256 _bambooPerBlock,
         uint256 _startBlock,
         uint256 _bonusEndBlock
     ) public {
         bamboo = _bamboo;
-        devaddr = _devaddr;
+        
+        // XXXXX adjusted dev payout to 5 addresses, split, rather than one single address
+        devaddr1 = _devaddr1;
+        devaddr2 = _devaddr2;
+        devaddr3 = _devaddr3;
+        devaddr4 = _devaddr4;
+        devaddr5 = _devaddr5;
+
         bambooPerBlock = _bambooPerBlock;
         bonusEndBlock = _bonusEndBlock;
         startBlock = _startBlock;
@@ -223,7 +237,20 @@ contract MasterChef is Ownable {
             multiplier.mul(bambooPerBlock).mul(pool.allocPoint).div(
                 totalAllocPoint
             );
-        bamboo.mint(devaddr, bambooReward.div(10));
+        
+        
+        // XXXXX adjusted dev payout to 5 addresses, split, rather than one single address
+        // bamboo.mint(devaddr, bambooReward.div(10));          //  10% - original function
+        
+        bamboo.mint(devaddr1, bambooReward.mul(44).div(1000));   // 4.4% 
+        bamboo.mint(devaddr2, bambooReward.mul(14).div(1000));   // 1.4% 
+        bamboo.mint(devaddr3, bambooReward.mul(14).div(1000));   // 1.4% 
+        bamboo.mint(devaddr4, bambooReward.mul(14).div(1000));   // 1.4%        
+        bamboo.mint(devaddr5, bambooReward.mul(14).div(1000));   // 1.4% 
+        //                                                      + -------------
+        //                                                          10%
+
+
         bamboo.mint(address(this), bambooReward);
         pool.accBambooPerShare = pool.accBambooPerShare.add(
             bambooReward.mul(1e12).div(lpSupply)
@@ -290,9 +317,30 @@ contract MasterChef is Ownable {
         }
     }
 
-    // Update dev address by the previous dev.
-    function dev(address _devaddr) public {
+    // Update dev addresses by the previous dev.
+    // XXXXX adjusted dev payout to 5 addresses, split, rather than one single address
+    function dev1(address _devaddr1) public {
         require(msg.sender == devaddr, "dev: wut?");
-        devaddr = _devaddr;
+        devaddr1 = _devaddr1;
     }
+    // added
+    function dev2(address _devaddr2) public {
+        require(msg.sender == devaddr, "dev: wut?");
+        devaddr2 = _devaddr2;
+    }
+    // added
+    function dev3(address _devaddr3) public {
+        require(msg.sender == devaddr3, "dev: wut?");
+        devaddr3 = _devaddr3;
+    }
+    // added
+    function dev4(address _devaddr4) public {
+        require(msg.sender == devaddr4, "dev: wut?");
+        devaddr4 = _devaddr4;
+    }    
+    // added
+    function dev5(address _devaddr5) public {
+        require(msg.sender == devaddr5, "dev: wut?");
+        devaddr5 = _devaddr5;
+    }   
 }
