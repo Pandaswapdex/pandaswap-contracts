@@ -327,12 +327,12 @@ contract MasterChef is Ownable {
     // Update dev addresses by the previous dev.
     // XXXXX adjusted dev payout to 5 addresses, split, rather than one single address
     function dev1(address _devaddr1) public {
-        require(msg.sender == devaddr, "dev: wut?");
+        require(msg.sender == devaddr1, "dev: wut?");
         devaddr1 = _devaddr1;
     }
     // added
     function dev2(address _devaddr2) public {
-        require(msg.sender == devaddr, "dev: wut?");
+        require(msg.sender == devaddr2, "dev: wut?");
         devaddr2 = _devaddr2;
     }
     // added
