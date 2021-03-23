@@ -25,7 +25,7 @@ interface IMigratorChef {
 // MasterChef is the master of Bamboo. He can make Bamboo and he is a fair guy.
 //
 // Note that it's ownable and the owner wields tremendous power. The ownership
-// will be transferred to a governance smart contract once SUSHI is sufficiently
+// will be transferred to a governance smart contract once BAMBOO is sufficiently
 // distributed and the community can show to govern itself.
 //
 // Have fun reading it. Hopefully it's bug-free. God bless.
@@ -37,7 +37,7 @@ contract MasterChef is Ownable {
         uint256 amount; // How many LP tokens the user has provided.
         uint256 rewardDebt; // Reward debt. See explanation below.
         //
-        // We do some fancy math here. Basically, any point in time, the amount of SUSHIs
+        // We do some fancy math here. Basically, any point in time, the amount of BAMBOOs
         // entitled to a user but is pending to be distributed is:
         //
         //   pending reward = (user.amount * pool.accBambooPerShare) - user.rewardDebt
@@ -51,14 +51,14 @@ contract MasterChef is Ownable {
     // Info of each pool.
     struct PoolInfo {
         IERC20 lpToken; // Address of LP token contract.
-        uint256 allocPoint; // How many allocation points assigned to this pool. SUSHIs to distribute per block.
-        uint256 lastRewardBlock; // Last block number that SUSHIs distribution occurs.
-        uint256 accBambooPerShare; // Accumulated SUSHIs per share, times 1e12. See below.
+        uint256 allocPoint; // How many allocation points assigned to this pool. BAMBOOs to distribute per block.
+        uint256 lastRewardBlock; // Last block number that BAMBOOs distribution occurs.
+        uint256 accBambooPerShare; // Accumulated BAMBOOs per share, times 1e12. See below.
     }
-    // The SUSHI TOKEN!
+    // The BAMBOO TOKEN!
     BambooToken public bamboo;
 
-    // XXXXX adjusted dev payout to 5 addresses, split, rather than one single address
+    // XXXXX adjusted dev payout to 6 addresses, split, rather than one single address
     // Dev addresses.
     address public devaddr1;
     address public devaddr2;
@@ -67,9 +67,9 @@ contract MasterChef is Ownable {
     address public devaddr5;
     address public devaddr6;
 
-    // Block number when bonus SUSHI period ends.
+    // Block number when bonus BAMBOO period ends.
     uint256 public bonusEndBlock;
-    // SUSHI tokens created per block.
+    // BAMBOO tokens created per block.
     uint256 public bambooPerBlock;
     // Bonus muliplier for early bamboo makers.
     uint256 public constant BONUS_MULTIPLIER = 10;
@@ -81,7 +81,7 @@ contract MasterChef is Ownable {
     mapping(uint256 => mapping(address => UserInfo)) public userInfo;
     // Total allocation poitns. Must be the sum of all allocation points in all pools.
     uint256 public totalAllocPoint = 0;
-    // The block number when SUSHI mining starts.
+    // The block number when BAMBOO mining starts.
     uint256 public startBlock;
     event Deposit(address indexed user, uint256 indexed pid, uint256 amount);
     event Withdraw(address indexed user, uint256 indexed pid, uint256 amount);
@@ -94,7 +94,7 @@ contract MasterChef is Ownable {
     constructor(
         BambooToken _bamboo,
         
-        // XXXXX adjusted dev payout to 5 addresses, split, rather than one single address
+        // XXXXX adjusted dev payout to 6 addresses, split, rather than one single address
         address _devaddr1,
         address _devaddr2,
         address _devaddr3,
@@ -108,7 +108,7 @@ contract MasterChef is Ownable {
     ) public {
         bamboo = _bamboo;
         
-        // XXXXX adjusted dev payout to 5 addresses, split, rather than one single address
+        // XXXXX adjusted dev payout to 6 addresses, split, rather than one single address
         devaddr1 = _devaddr1;
         devaddr2 = _devaddr2;
         devaddr3 = _devaddr3;
@@ -148,7 +148,7 @@ contract MasterChef is Ownable {
         );
     }
 
-    // Update the given pool's SUSHI allocation point. Can only be called by the owner.
+    // Update the given pool's BAMBOO allocation point. Can only be called by the owner.
     // XXXXX Renamed this function from "add()" to "adjustPoolRewards()"
     function set(
         uint256 _pid,
@@ -199,7 +199,7 @@ contract MasterChef is Ownable {
         }
     }
 
-    // View function to see pending SUSHIs on frontend.
+    // View function to see pending BAMBOOs on frontend.
     function pendingBamboo(uint256 _pid, address _user)
         external
         view
@@ -249,7 +249,7 @@ contract MasterChef is Ownable {
             );
         
         
-        // XXXXX adjusted dev payout to 5 addresses, split, rather than one single address
+        // XXXXX adjusted dev payout to 6 addresses, split, rather than one single address
         // bamboo.mint(devaddr, bambooReward.div(10));          //  10% - original function
         
         bamboo.mint(devaddr1, bambooReward.mul(22).div(1000));   // 2.2% 
@@ -271,7 +271,7 @@ contract MasterChef is Ownable {
         pool.lastRewardBlock = block.number;
     }
 
-    // Deposit LP tokens to MasterChef for SUSHI allocation.
+    // Deposit LP tokens to MasterChef for BAMBOO allocation.
     function deposit(uint256 _pid, uint256 _amount) public {
         PoolInfo storage pool = poolInfo[_pid];
         UserInfo storage user = userInfo[_pid][msg.sender];
@@ -320,7 +320,7 @@ contract MasterChef is Ownable {
         user.rewardDebt = 0;
     }
 
-    // Safe bamboo transfer function, just in case if rounding error causes pool to not have enough SUSHIs.
+    // Safe bamboo transfer function, just in case if rounding error causes pool to not have enough BAMBOOs.
     function safeBambooTransfer(address _to, uint256 _amount) internal {
         uint256 bambooBal = bamboo.balanceOf(address(this));
         if (_amount > bambooBal) {
@@ -331,7 +331,7 @@ contract MasterChef is Ownable {
     }
 
     // Update dev addresses by the previous dev.
-    // XXXXX adjusted dev payout to 5 addresses, split, rather than one single address
+    // XXXXX adjusted dev payout to 6 addresses, split, rather than one single address
     function dev1(address _devaddr1) public {
         require(msg.sender == devaddr1, "dev: wut?");
         devaddr1 = _devaddr1;
