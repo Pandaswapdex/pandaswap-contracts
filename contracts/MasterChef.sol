@@ -65,6 +65,7 @@ contract MasterChef is Ownable {
     address public devaddr3;
     address public devaddr4;
     address public devaddr5;
+    address public devaddr6;
 
     // Block number when bonus SUSHI period ends.
     uint256 public bonusEndBlock;
@@ -99,6 +100,7 @@ contract MasterChef is Ownable {
         address _devaddr3,
         address _devaddr4,
         address _devaddr5,
+        address _devaddr6,
 
         uint256 _bambooPerBlock,
         uint256 _startBlock,
@@ -112,6 +114,7 @@ contract MasterChef is Ownable {
         devaddr3 = _devaddr3;
         devaddr4 = _devaddr4;
         devaddr5 = _devaddr5;
+        devaddr6 = _devaddr6;
 
         bambooPerBlock = _bambooPerBlock;
         bonusEndBlock = _bonusEndBlock;
@@ -249,16 +252,19 @@ contract MasterChef is Ownable {
         // XXXXX adjusted dev payout to 5 addresses, split, rather than one single address
         // bamboo.mint(devaddr, bambooReward.div(10));          //  10% - original function
         
-        bamboo.mint(devaddr1, bambooReward.mul(44).div(1000));   // 4.4% 
-        bamboo.mint(devaddr2, bambooReward.mul(14).div(1000));   // 1.4% 
+        bamboo.mint(devaddr1, bambooReward.mul(22).div(1000));   // 2.2% 
+        bamboo.mint(devaddr2, bambooReward.mul(22).div(1000));   // 2.2% 
         bamboo.mint(devaddr3, bambooReward.mul(14).div(1000));   // 1.4% 
         bamboo.mint(devaddr4, bambooReward.mul(14).div(1000));   // 1.4%        
-        bamboo.mint(devaddr5, bambooReward.mul(14).div(1000));   // 1.4% 
+        bamboo.mint(devaddr5, bambooReward.mul(14).div(1000));   // 1.4%
+        bamboo.mint(devaddr6, bambooReward.mul(14).div(1000));   // 1.4% 
         //                                                      + -------------
         //                                                          10%
 
-
-        bamboo.mint(address(this), bambooReward);
+        // XXXX Adjusted user distribution to actually be 90%. The user distribution wasn't
+        // accounting for the 10% dev pay and result in a dev payout of 9.1% when supply cap is reached.
+        
+        bamboo.mint(address(this), bambooReward.mul(9).div(10));
         pool.accBambooPerShare = pool.accBambooPerShare.add(
             bambooReward.mul(1e12).div(lpSupply)
         );
@@ -349,5 +355,10 @@ contract MasterChef is Ownable {
     function dev5(address _devaddr5) public {
         require(msg.sender == devaddr5, "dev: wut?");
         devaddr5 = _devaddr5;
-    }   
+    }
+    // added
+    function dev6(address _devaddr6) public {
+        require(msg.sender == devaddr6, "dev: wut?");
+        devaddr6 = _devaddr6;
+    }
 }
