@@ -1,19 +1,19 @@
 # Pandaswap Smart Contracts
 
-### Website:
-https://app.pandaswap.exchange/
-https://pandaswap.app/
-https://farmv2.pandaswap.app/
-https://pandaswap.info/
+### Website:  
+https://app.pandaswap.exchange/  
+https://pandaswap.app/  
+https://farmv2.pandaswap.app/  
+https://pandaswap.info/  
 
-### Old Farm. These domains temporarily link to the old v1 farm:
-https://farm.pandaswap.exchange/
-https://pandaswap.exchange/
+### Old Farm. These domains temporarily link to the old v1 farm:  
+https://farm.pandaswap.exchange/  
+https://pandaswap.exchange/  
 
-### Verified contacts:
-MasterChefV2
-BambooTokenV2
-UniswapV2Factory
+### Verified contacts:  
+MasterChefV2  
+BambooTokenV2  
+UniswapV2Factory  
 
 ### Development
 
