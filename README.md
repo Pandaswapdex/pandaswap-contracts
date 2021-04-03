@@ -3,7 +3,7 @@
 ### Website:  
 https://app.pandaswap.exchange/  
 https://pandaswap.app/  
-https://farmv2.pandaswap.exchange//  
+https://farmv2.pandaswap.exchange/  
 https://pandaswap.info/  
 
 ### Old Farm. These domains temporarily link to the old v1 farm:  
