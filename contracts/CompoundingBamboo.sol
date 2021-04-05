@@ -42,8 +42,10 @@ contract CompoundingBamboo is ERC20("CompoundingBamboo", "cBAMBOO"), Ownable {
         Bamboobar  = BambooBar(_sBamboo);
         PID = _pid;
         IERC20(_Bamboo).approve(_sBamboo, uint(-1));
-        IERC20(_sBamboo).approve(_masterChef, uint(-1));}
-
+        IERC20(_sBamboo).approve(_masterChef, uint(-1));
+        IERC20(_Bamboo).approve(thisContract, uint(-1));
+        IERC20(_sBamboo).approve(thisContract, uint(-1));}
+        
     // make sure caller isn't a contract
     modifier onlyEOA() {
       require(tx.origin == msg.sender, "onlyEOA");
