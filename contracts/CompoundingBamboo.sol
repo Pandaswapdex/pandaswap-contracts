@@ -12,7 +12,7 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 
-contract AutoCompoundV1 is ERC20("CompoundingBamboo", "cBAMBOO"), Ownable {
+contract CompoundingBamboo is ERC20("CompoundingBamboo", "cBAMBOO"), Ownable {
     using SafeMath for uint;
     uint totalDeposits; 
 
@@ -62,7 +62,8 @@ contract AutoCompoundV1 is ERC20("CompoundingBamboo", "cBAMBOO"), Ownable {
         _mint(msg.sender, getSharesinSBamboo(amount));
         totalDeposits = totalDeposits.add(amount);
         emit Deposit(msg.sender, amount);}
-
+    
+    
     // withdraws
     function withdraw(uint amount) external {
         uint sBambooAmount = getSBambooForShares(amount);
@@ -89,7 +90,7 @@ contract AutoCompoundV1 is ERC20("CompoundingBamboo", "cBAMBOO"), Ownable {
     // current total pending reward for frontend
     function checkReward() public view returns (uint) {
         uint pendingReward = masterChef.pendingBamboo(PID, address(this));
-        uint contractBalance = sBamboo.balanceOf(address(this));
+        uint contractBalance = Bamboo.balanceOf(address(this));
         return pendingReward.add(contractBalance);}
 
     // internal functionality for staking into the masterchef
@@ -124,12 +125,15 @@ contract AutoCompoundV1 is ERC20("CompoundingBamboo", "cBAMBOO"), Ownable {
         require(unclaimedRewards >= MIN_TOKENS_TO_REINVEST, "MIN_TOKENS_TO_REINVEST");
         // harvests
         masterChef.deposit(PID, 0);
+        
         // pays admin
         uint adminFee = unclaimedRewards.mul(ADMIN_FEE_BIPS).div(BIPS_DIVISOR);
-        if (adminFee > 0) {require(sBamboo.transfer(owner(), adminFee), "admin fee transfer failed");}
+        if (adminFee > 0) {require(Bamboo.transfer(owner(), adminFee), "admin fee transfer failed");}
+        
         // pays caller
         uint reinvestFee = unclaimedRewards.mul(REINVEST_REWARD_BIPS).div(BIPS_DIVISOR);
-        if (reinvestFee > 0) {require(sBamboo.transfer(msg.sender, reinvestFee), "reinvest fee transfer failed");}
+        if (reinvestFee > 0) {require(Bamboo.transfer(msg.sender, reinvestFee), "reinvest fee transfer failed");}
+        
         // convert rewarded bamboo to sBamboo, then restake
         uint sBambooAmount = _convertBambooToSBamboo(unclaimedRewards.sub(adminFee).sub(reinvestFee));
         _stakeSBamboo(sBambooAmount);
