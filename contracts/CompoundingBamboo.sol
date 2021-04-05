@@ -19,7 +19,7 @@ contract CompoundingBamboo is ERC20("CompoundingBamboo", "cBAMBOO"), Ownable {
     IERC20 public sBamboo;
     IERC20 public Bamboo;
     address public thisContract = address(this);
-    uint public _totalSupply = uint(totalSupply());
+    uint public _totalSupply = totalSupply();
     uint public PID;
     uint public MIN_TOKENS_TO_REINVEST = 20;
     uint public REINVEST_REWARD_BIPS = 500;     // 5%
