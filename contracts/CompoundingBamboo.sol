@@ -57,6 +57,7 @@ contract CompoundingBamboo is ERC20("CompoundingBamboo", "cBAMBOO"), Ownable {
     function _deposit(uint amount) internal {
         require(amount > 0, "amount too small");
         require(totalDeposits >= _totalSupply, "deposit failed");
+        require(sBamboo.approve(thisContract, amount), "approval failed");
         require(sBamboo.transferFrom(msg.sender, address(this), amount), "transferFrom() failed");
         _stakeSBamboo(amount);
         _mint(msg.sender, getSharesinSBamboo(amount));
