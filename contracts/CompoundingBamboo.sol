@@ -1,7 +1,5 @@
 //SPDX-License-Identifier: MIT
 pragma solidity ^0.6.12;
-pragma experimental ABIEncoderV2;
-
 
 import "./MasterChefV2.sol";
 import "./BambooBar.sol";
@@ -10,7 +8,6 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/utils/EnumerableSet.sol";
 import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-
 
 contract CompoundingBamboo is ERC20("CompoundingBamboo", "cBAMBOO"), Ownable {
     using SafeMath for uint;
@@ -56,25 +53,39 @@ contract CompoundingBamboo is ERC20("CompoundingBamboo", "cBAMBOO"), Ownable {
     function deposit(uint amount) external {_deposit(amount);}
 
     function _deposit(uint amount) internal {
+        require(amount > 0, "amount too small");
         require(totalDeposits >= _totalSupply, "deposit failed");
         require(sBamboo.transferFrom(msg.sender, address(this), amount), "transferFrom() failed");
         _stakeSBamboo(amount);
         _mint(msg.sender, getSharesinSBamboo(amount));
         totalDeposits = totalDeposits.add(amount);
         emit Deposit(msg.sender, amount);}
-    
+        
+    // deposit with bamboo
+    function depositBamboo(uint amount) external {_deposit(amount);}
+
+    function _depositBamboo(uint amount) internal {
+        require(amount > 0, "amount too small");
+        require(totalDeposits >= _totalSupply, "deposit failed");
+        require(Bamboo.approve(thisContract, amount), "approval failed");
+        require(Bamboo.transferFrom(msg.sender, address(this), amount), "transferFrom() failed");        
+        _convertBambooToSBamboo(amount);
+        _stakeSBamboo(amount);
+        _mint(msg.sender, getSharesinSBamboo(amount));
+        totalDeposits = totalDeposits.add(amount);
+        emit Deposit(msg.sender, amount);}
     
     // withdraws
     function withdraw(uint amount) external {
         uint sBambooAmount = getSBambooForShares(amount);
         if (sBambooAmount > 0) {
-        _withdrawLpTokens(sBambooAmount);
+        _withdrawSBamboo(sBambooAmount);
         require(sBamboo.transfer(msg.sender, sBambooAmount), "transfer failed");
         _burn(msg.sender, amount);
         totalDeposits = totalDeposits.sub(sBambooAmount);
         emit Withdraw(msg.sender, sBambooAmount);}}
 
-    function _withdrawLpTokens(uint amount) internal {
+    function _withdrawSBamboo(uint amount) internal {
         require(amount > 0, "amount too low");
         masterChef.withdraw(PID, amount);}
 
@@ -134,12 +145,13 @@ contract CompoundingBamboo is ERC20("CompoundingBamboo", "cBAMBOO"), Ownable {
         uint reinvestFee = unclaimedRewards.mul(REINVEST_REWARD_BIPS).div(BIPS_DIVISOR);
         if (reinvestFee > 0) {require(Bamboo.transfer(msg.sender, reinvestFee), "reinvest fee transfer failed");}
         
-        // convert rewarded bamboo to sBamboo, then restake
+        // convert rewarded Bamboo to sBamboo, then restakes
         uint sBambooAmount = _convertBambooToSBamboo(unclaimedRewards.sub(adminFee).sub(reinvestFee));
         _stakeSBamboo(sBambooAmount);
         totalDeposits = totalDeposits.add(sBambooAmount);
         emit Reinvest(totalDeposits, _totalSupply);}
 
+    // enters bamboobar, aka swaps bamboo for bamboo
     function _convertBambooToSBamboo(uint amount) internal returns (uint) {
         Bamboobar.enter(amount);}
 }
