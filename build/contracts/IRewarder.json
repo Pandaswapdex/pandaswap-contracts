@@ -59,43 +59,43 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"pid\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"bambooAmount\",\"type\":\"uint256\"}],\"name\":\"onBambooReward\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"pid\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"bambooAmount\",\"type\":\"uint256\"}],\"name\":\"pendingTokens\",\"outputs\":[{\"internalType\":\"contract IERC20[]\",\"name\":\"\",\"type\":\"address[]\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/C/Users/user/Documents/GitHub/pandaswap-contracts/contracts/interfaces/IRewarder.sol\":\"IRewarder\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/user/Documents/GitHub/pandaswap-contracts/contracts/interfaces/IRewarder.sol\":{\"keccak256\":\"0xc56e8720c13155038391851156c7cec805a715b5556a1ff110358269bc1865f4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://477f5768f3252d8be9bafc7bb25bd2e018b99da9a83df344e5204c43a7381f1a\",\"dweb:/ipfs/QmYoB97SBVjLMN5kFusSxJTsFWVbzhKmPze72T77WpRxdp\"]},\"@boringcrypto/boring-solidity/contracts/interfaces/IERC20.sol\":{\"keccak256\":\"0x8004f86e4536cca55b8eeb2621fe18e1ee57d779396ddef50bce5bf70fb59867\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://149f2f758deda74a5e855ff934fe93daadadb583d09440832e908365f9235d29\",\"dweb:/ipfs/QmUsZkg1zhehPbPBbf15Pv5BEnP4eaKMpJ1cBN9LGaZurC\"]},\"@boringcrypto/boring-solidity/contracts/libraries/BoringERC20.sol\":{\"keccak256\":\"0x69f1ccf716991e5d6d64dc0e3bc3828fd1990bc18400d680b1aa1960675daaaa\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://b529d3c0ce62bf9fe78f919076e8bf6a1f06803a8977bcabfde79f1979129a6c\",\"dweb:/ipfs/QmbqHLBPKtSb9wDCrzxeRSRmZJpNdstKjCYXo5EcYEFL4e\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"pid\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"bambooAmount\",\"type\":\"uint256\"}],\"name\":\"onBambooReward\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"pid\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"bambooAmount\",\"type\":\"uint256\"}],\"name\":\"pendingTokens\",\"outputs\":[{\"internalType\":\"contract IERC20[]\",\"name\":\"\",\"type\":\"address[]\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/josephliu/workspace/pandaswap-contracts/contracts/interfaces/IRewarder.sol\":\"IRewarder\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/josephliu/workspace/pandaswap-contracts/contracts/interfaces/IRewarder.sol\":{\"keccak256\":\"0xf26eed7390b6009efa7fddf39f0be58538a298ba5907c4267a6e12bdec7427fb\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://f567d2103431de608e0cdaa0b1a67d8971c9f7b92de089d61c05661382395b1c\",\"dweb:/ipfs/QmVkTtzFMrhUFcCnuE444hhcyRgPPA7J4XJqArYiQLEcQb\"]},\"@boringcrypto/boring-solidity/contracts/interfaces/IERC20.sol\":{\"keccak256\":\"0x8004f86e4536cca55b8eeb2621fe18e1ee57d779396ddef50bce5bf70fb59867\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://149f2f758deda74a5e855ff934fe93daadadb583d09440832e908365f9235d29\",\"dweb:/ipfs/QmUsZkg1zhehPbPBbf15Pv5BEnP4eaKMpJ1cBN9LGaZurC\"]},\"@boringcrypto/boring-solidity/contracts/libraries/BoringERC20.sol\":{\"keccak256\":\"0x69f1ccf716991e5d6d64dc0e3bc3828fd1990bc18400d680b1aa1960675daaaa\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://b529d3c0ce62bf9fe78f919076e8bf6a1f06803a8977bcabfde79f1979129a6c\",\"dweb:/ipfs/QmbqHLBPKtSb9wDCrzxeRSRmZJpNdstKjCYXo5EcYEFL4e\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\r\n\r\npragma solidity 0.6.12;\r\n\r\nimport \"@boringcrypto/boring-solidity/contracts/libraries/BoringERC20.sol\";\r\n\r\ninterface IRewarder {\r\n    using BoringERC20 for IERC20;\r\n    function onBambooReward(uint256 pid, address user, uint256 bambooAmount) external;\r\n    function pendingTokens(uint256 pid, address user, uint256 bambooAmount) external returns (IERC20[] memory, uint256[] memory);\r\n}\r\n",
-  "sourcePath": "C:\\Users\\user\\Documents\\GitHub\\pandaswap-contracts\\contracts\\interfaces\\IRewarder.sol",
+  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport \"@boringcrypto/boring-solidity/contracts/libraries/BoringERC20.sol\";\n\ninterface IRewarder {\n    using BoringERC20 for IERC20;\n    function onBambooReward(uint256 pid, address user, uint256 bambooAmount) external;\n    function pendingTokens(uint256 pid, address user, uint256 bambooAmount) external returns (IERC20[] memory, uint256[] memory);\n}\n",
+  "sourcePath": "/Users/josephliu/workspace/pandaswap-contracts/contracts/interfaces/IRewarder.sol",
   "ast": {
-    "absolutePath": "/C/Users/user/Documents/GitHub/pandaswap-contracts/contracts/interfaces/IRewarder.sol",
+    "absolutePath": "/Users/josephliu/workspace/pandaswap-contracts/contracts/interfaces/IRewarder.sol",
     "exportedSymbols": {
       "IRewarder": [
-        3433
+        5382
       ]
     },
-    "id": 3434,
+    "id": 5383,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3404,
+        "id": 5353,
         "literals": [
           "solidity",
           "0.6",
           ".12"
         ],
         "nodeType": "PragmaDirective",
-        "src": "35:23:7"
+        "src": "33:23:9"
       },
       {
         "absolutePath": "@boringcrypto/boring-solidity/contracts/libraries/BoringERC20.sol",
         "file": "@boringcrypto/boring-solidity/contracts/libraries/BoringERC20.sol",
-        "id": 3405,
+        "id": 5354,
         "nodeType": "ImportDirective",
-        "scope": 3434,
-        "sourceUnit": 9994,
-        "src": "62:75:7",
+        "scope": 5383,
+        "sourceUnit": 11943,
+        "src": "58:75:9",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -106,38 +106,38 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 3433,
+        "id": 5382,
         "linearizedBaseContracts": [
-          3433
+          5382
         ],
         "name": "IRewarder",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
-            "id": 3408,
+            "id": 5357,
             "libraryName": {
               "contractScope": null,
-              "id": 3406,
+              "id": 5355,
               "name": "BoringERC20",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 9993,
-              "src": "174:11:7",
+              "referencedDeclaration": 11942,
+              "src": "167:11:9",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_BoringERC20_$9993",
+                "typeIdentifier": "t_contract$_BoringERC20_$11942",
                 "typeString": "library BoringERC20"
               }
             },
             "nodeType": "UsingForDirective",
-            "src": "168:29:7",
+            "src": "161:29:9",
             "typeName": {
               "contractScope": null,
-              "id": 3407,
+              "id": 5356,
               "name": "IERC20",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 9777,
-              "src": "190:6:7",
+              "referencedDeclaration": 11726,
+              "src": "183:6:9",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IERC20_$9777",
+                "typeIdentifier": "t_contract$_IERC20_$11726",
                 "typeString": "contract IERC20"
               }
             }
@@ -146,7 +146,7 @@
             "body": null,
             "documentation": null,
             "functionSelector": "da39e53d",
-            "id": 3417,
+            "id": 5366,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -154,18 +154,18 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 3415,
+              "id": 5364,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3410,
+                  "id": 5359,
                   "mutability": "mutable",
                   "name": "pid",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3417,
-                  "src": "227:11:7",
+                  "scope": 5366,
+                  "src": "219:11:9",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -173,10 +173,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3409,
+                    "id": 5358,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "227:7:7",
+                    "src": "219:7:9",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -187,13 +187,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3412,
+                  "id": 5361,
                   "mutability": "mutable",
                   "name": "user",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3417,
-                  "src": "240:12:7",
+                  "scope": 5366,
+                  "src": "232:12:9",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -201,10 +201,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3411,
+                    "id": 5360,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "240:7:7",
+                    "src": "232:7:9",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -216,13 +216,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3414,
+                  "id": 5363,
                   "mutability": "mutable",
                   "name": "bambooAmount",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3417,
-                  "src": "254:20:7",
+                  "scope": 5366,
+                  "src": "246:20:9",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -230,10 +230,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3413,
+                    "id": 5362,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "254:7:7",
+                    "src": "246:7:9",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -243,16 +243,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "226:49:7"
+              "src": "218:49:9"
             },
             "returnParameters": {
-              "id": 3416,
+              "id": 5365,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "284:0:7"
+              "src": "276:0:9"
             },
-            "scope": 3433,
-            "src": "203:82:7",
+            "scope": 5382,
+            "src": "195:82:9",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -261,7 +261,7 @@
             "body": null,
             "documentation": null,
             "functionSelector": "d63b3c49",
-            "id": 3432,
+            "id": 5381,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -269,18 +269,18 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 3424,
+              "id": 5373,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3419,
+                  "id": 5368,
                   "mutability": "mutable",
                   "name": "pid",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3432,
-                  "src": "314:11:7",
+                  "scope": 5381,
+                  "src": "305:11:9",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -288,10 +288,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3418,
+                    "id": 5367,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "314:7:7",
+                    "src": "305:7:9",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -302,13 +302,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3421,
+                  "id": 5370,
                   "mutability": "mutable",
                   "name": "user",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3432,
-                  "src": "327:12:7",
+                  "scope": 5381,
+                  "src": "318:12:9",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -316,10 +316,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3420,
+                    "id": 5369,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "327:7:7",
+                    "src": "318:7:9",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -331,13 +331,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3423,
+                  "id": 5372,
                   "mutability": "mutable",
                   "name": "bambooAmount",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3432,
-                  "src": "341:20:7",
+                  "scope": 5381,
+                  "src": "332:20:9",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -345,10 +345,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3422,
+                    "id": 5371,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "341:7:7",
+                    "src": "332:7:9",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -358,46 +358,46 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "313:49:7"
+              "src": "304:49:9"
             },
             "returnParameters": {
-              "id": 3431,
+              "id": 5380,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3427,
+                  "id": 5376,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3432,
-                  "src": "381:15:7",
+                  "scope": 5381,
+                  "src": "372:15:9",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_contract$_IERC20_$9777_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_contract$_IERC20_$11726_$dyn_memory_ptr",
                     "typeString": "contract IERC20[]"
                   },
                   "typeName": {
                     "baseType": {
                       "contractScope": null,
-                      "id": 3425,
+                      "id": 5374,
                       "name": "IERC20",
                       "nodeType": "UserDefinedTypeName",
-                      "referencedDeclaration": 9777,
-                      "src": "381:6:7",
+                      "referencedDeclaration": 11726,
+                      "src": "372:6:9",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IERC20_$9777",
+                        "typeIdentifier": "t_contract$_IERC20_$11726",
                         "typeString": "contract IERC20"
                       }
                     },
-                    "id": 3426,
+                    "id": 5375,
                     "length": null,
                     "nodeType": "ArrayTypeName",
-                    "src": "381:8:7",
+                    "src": "372:8:9",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_contract$_IERC20_$9777_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_contract$_IERC20_$11726_$dyn_storage_ptr",
                       "typeString": "contract IERC20[]"
                     }
                   },
@@ -406,13 +406,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3430,
+                  "id": 5379,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 3432,
-                  "src": "398:16:7",
+                  "scope": 5381,
+                  "src": "389:16:9",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -421,19 +421,19 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 3428,
+                      "id": 5377,
                       "name": "uint256",
                       "nodeType": "ElementaryTypeName",
-                      "src": "398:7:7",
+                      "src": "389:7:9",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "id": 3429,
+                    "id": 5378,
                     "length": null,
                     "nodeType": "ArrayTypeName",
-                    "src": "398:9:7",
+                    "src": "389:9:9",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
                       "typeString": "uint256[]"
@@ -443,27 +443,27 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "380:35:7"
+              "src": "371:35:9"
             },
-            "scope": 3433,
-            "src": "291:125:7",
+            "scope": 5382,
+            "src": "282:125:9",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 3434,
-        "src": "141:278:7"
+        "scope": 5383,
+        "src": "135:274:9"
       }
     ],
-    "src": "35:386:7"
+    "src": "33:377:9"
   },
   "legacyAST": {
     "attributes": {
-      "absolutePath": "/C/Users/user/Documents/GitHub/pandaswap-contracts/contracts/interfaces/IRewarder.sol",
+      "absolutePath": "/Users/josephliu/workspace/pandaswap-contracts/contracts/interfaces/IRewarder.sol",
       "exportedSymbols": {
         "IRewarder": [
-          3433
+          5382
         ]
       },
       "license": "MIT"
@@ -477,24 +477,24 @@
             ".12"
           ]
         },
-        "id": 3404,
+        "id": 5353,
         "name": "PragmaDirective",
-        "src": "35:23:7"
+        "src": "33:23:9"
       },
       {
         "attributes": {
-          "SourceUnit": 9994,
+          "SourceUnit": 11943,
           "absolutePath": "@boringcrypto/boring-solidity/contracts/libraries/BoringERC20.sol",
           "file": "@boringcrypto/boring-solidity/contracts/libraries/BoringERC20.sol",
-          "scope": 3434,
+          "scope": 5383,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 3405,
+        "id": 5354,
         "name": "ImportDirective",
-        "src": "62:75:7"
+        "src": "58:75:9"
       },
       {
         "attributes": {
@@ -509,10 +509,10 @@
           "documentation": null,
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            3433
+            5382
           ],
           "name": "IRewarder",
-          "scope": 3434
+          "scope": 5383
         },
         "children": [
           {
@@ -521,28 +521,28 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "BoringERC20",
-                  "referencedDeclaration": 9993,
+                  "referencedDeclaration": 11942,
                   "type": "library BoringERC20"
                 },
-                "id": 3406,
+                "id": 5355,
                 "name": "UserDefinedTypeName",
-                "src": "174:11:7"
+                "src": "167:11:9"
               },
               {
                 "attributes": {
                   "contractScope": null,
                   "name": "IERC20",
-                  "referencedDeclaration": 9777,
+                  "referencedDeclaration": 11726,
                   "type": "contract IERC20"
                 },
-                "id": 3407,
+                "id": 5356,
                 "name": "UserDefinedTypeName",
-                "src": "190:6:7"
+                "src": "183:6:9"
               }
             ],
-            "id": 3408,
+            "id": 5357,
             "name": "UsingForDirective",
-            "src": "168:29:7"
+            "src": "161:29:9"
           },
           {
             "attributes": {
@@ -557,7 +557,7 @@
               ],
               "name": "onBambooReward",
               "overrides": null,
-              "scope": 3433,
+              "scope": 5382,
               "stateMutability": "nonpayable",
               "virtual": false,
               "visibility": "external"
@@ -571,7 +571,7 @@
                       "mutability": "mutable",
                       "name": "pid",
                       "overrides": null,
-                      "scope": 3417,
+                      "scope": 5366,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -584,14 +584,14 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 3409,
+                        "id": 5358,
                         "name": "ElementaryTypeName",
-                        "src": "227:7:7"
+                        "src": "219:7:9"
                       }
                     ],
-                    "id": 3410,
+                    "id": 5359,
                     "name": "VariableDeclaration",
-                    "src": "227:11:7"
+                    "src": "219:11:9"
                   },
                   {
                     "attributes": {
@@ -599,7 +599,7 @@
                       "mutability": "mutable",
                       "name": "user",
                       "overrides": null,
-                      "scope": 3417,
+                      "scope": 5366,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -613,14 +613,14 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 3411,
+                        "id": 5360,
                         "name": "ElementaryTypeName",
-                        "src": "240:7:7"
+                        "src": "232:7:9"
                       }
                     ],
-                    "id": 3412,
+                    "id": 5361,
                     "name": "VariableDeclaration",
-                    "src": "240:12:7"
+                    "src": "232:12:9"
                   },
                   {
                     "attributes": {
@@ -628,7 +628,7 @@
                       "mutability": "mutable",
                       "name": "bambooAmount",
                       "overrides": null,
-                      "scope": 3417,
+                      "scope": 5366,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -641,19 +641,19 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 3413,
+                        "id": 5362,
                         "name": "ElementaryTypeName",
-                        "src": "254:7:7"
+                        "src": "246:7:9"
                       }
                     ],
-                    "id": 3414,
+                    "id": 5363,
                     "name": "VariableDeclaration",
-                    "src": "254:20:7"
+                    "src": "246:20:9"
                   }
                 ],
-                "id": 3415,
+                "id": 5364,
                 "name": "ParameterList",
-                "src": "226:49:7"
+                "src": "218:49:9"
               },
               {
                 "attributes": {
@@ -662,14 +662,14 @@
                   ]
                 },
                 "children": [],
-                "id": 3416,
+                "id": 5365,
                 "name": "ParameterList",
-                "src": "284:0:7"
+                "src": "276:0:9"
               }
             ],
-            "id": 3417,
+            "id": 5366,
             "name": "FunctionDefinition",
-            "src": "203:82:7"
+            "src": "195:82:9"
           },
           {
             "attributes": {
@@ -684,7 +684,7 @@
               ],
               "name": "pendingTokens",
               "overrides": null,
-              "scope": 3433,
+              "scope": 5382,
               "stateMutability": "nonpayable",
               "virtual": false,
               "visibility": "external"
@@ -698,7 +698,7 @@
                       "mutability": "mutable",
                       "name": "pid",
                       "overrides": null,
-                      "scope": 3432,
+                      "scope": 5381,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -711,14 +711,14 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 3418,
+                        "id": 5367,
                         "name": "ElementaryTypeName",
-                        "src": "314:7:7"
+                        "src": "305:7:9"
                       }
                     ],
-                    "id": 3419,
+                    "id": 5368,
                     "name": "VariableDeclaration",
-                    "src": "314:11:7"
+                    "src": "305:11:9"
                   },
                   {
                     "attributes": {
@@ -726,7 +726,7 @@
                       "mutability": "mutable",
                       "name": "user",
                       "overrides": null,
-                      "scope": 3432,
+                      "scope": 5381,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -740,14 +740,14 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 3420,
+                        "id": 5369,
                         "name": "ElementaryTypeName",
-                        "src": "327:7:7"
+                        "src": "318:7:9"
                       }
                     ],
-                    "id": 3421,
+                    "id": 5370,
                     "name": "VariableDeclaration",
-                    "src": "327:12:7"
+                    "src": "318:12:9"
                   },
                   {
                     "attributes": {
@@ -755,7 +755,7 @@
                       "mutability": "mutable",
                       "name": "bambooAmount",
                       "overrides": null,
-                      "scope": 3432,
+                      "scope": 5381,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -768,19 +768,19 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 3422,
+                        "id": 5371,
                         "name": "ElementaryTypeName",
-                        "src": "341:7:7"
+                        "src": "332:7:9"
                       }
                     ],
-                    "id": 3423,
+                    "id": 5372,
                     "name": "VariableDeclaration",
-                    "src": "341:20:7"
+                    "src": "332:20:9"
                   }
                 ],
-                "id": 3424,
+                "id": 5373,
                 "name": "ParameterList",
-                "src": "313:49:7"
+                "src": "304:49:9"
               },
               {
                 "children": [
@@ -790,7 +790,7 @@
                       "mutability": "mutable",
                       "name": "",
                       "overrides": null,
-                      "scope": 3432,
+                      "scope": 5381,
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "type": "contract IERC20[]",
@@ -808,22 +808,22 @@
                             "attributes": {
                               "contractScope": null,
                               "name": "IERC20",
-                              "referencedDeclaration": 9777,
+                              "referencedDeclaration": 11726,
                               "type": "contract IERC20"
                             },
-                            "id": 3425,
+                            "id": 5374,
                             "name": "UserDefinedTypeName",
-                            "src": "381:6:7"
+                            "src": "372:6:9"
                           }
                         ],
-                        "id": 3426,
+                        "id": 5375,
                         "name": "ArrayTypeName",
-                        "src": "381:8:7"
+                        "src": "372:8:9"
                       }
                     ],
-                    "id": 3427,
+                    "id": 5376,
                     "name": "VariableDeclaration",
-                    "src": "381:15:7"
+                    "src": "372:15:9"
                   },
                   {
                     "attributes": {
@@ -831,7 +831,7 @@
                       "mutability": "mutable",
                       "name": "",
                       "overrides": null,
-                      "scope": 3432,
+                      "scope": 5381,
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "type": "uint256[]",
@@ -850,39 +850,39 @@
                               "name": "uint256",
                               "type": "uint256"
                             },
-                            "id": 3428,
+                            "id": 5377,
                             "name": "ElementaryTypeName",
-                            "src": "398:7:7"
+                            "src": "389:7:9"
                           }
                         ],
-                        "id": 3429,
+                        "id": 5378,
                         "name": "ArrayTypeName",
-                        "src": "398:9:7"
+                        "src": "389:9:9"
                       }
                     ],
-                    "id": 3430,
+                    "id": 5379,
                     "name": "VariableDeclaration",
-                    "src": "398:16:7"
+                    "src": "389:16:9"
                   }
                 ],
-                "id": 3431,
+                "id": 5380,
                 "name": "ParameterList",
-                "src": "380:35:7"
+                "src": "371:35:9"
               }
             ],
-            "id": 3432,
+            "id": 5381,
             "name": "FunctionDefinition",
-            "src": "291:125:7"
+            "src": "282:125:9"
           }
         ],
-        "id": 3433,
+        "id": 5382,
         "name": "ContractDefinition",
-        "src": "141:278:7"
+        "src": "135:274:9"
       }
     ],
-    "id": 3434,
+    "id": 5383,
     "name": "SourceUnit",
-    "src": "35:386:7"
+    "src": "33:377:9"
   },
   "compiler": {
     "name": "solc",
@@ -890,7 +890,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-03-21T21:12:05.416Z",
+  "updatedAt": "2021-04-03T04:46:17.897Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
