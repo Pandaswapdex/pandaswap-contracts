@@ -1,5 +1,6 @@
 abi/
 artifacts/
+build/
 cache/
 coverage/
 exports/
