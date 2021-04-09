@@ -4,6 +4,8 @@
 
 pragma solidity ^0.6.12;
 
+import "../MasterChefV2.sol";
+
 interface IERC20 {
     function totalSupply() external view returns (uint256);
     function balanceOf(address account) external view returns (uint256);
@@ -13,12 +15,6 @@ interface IERC20 {
     function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Approval(address indexed owner, address indexed spender, uint256 value);
-}
-
-interface IChef {
-    function add(uint256 _allocPoint,IERC20 _lpToken,bool _withUpdate) public;
-    function set(uint256 _pid,uint256 _allocPoint,bool _withUpdate);
-    function massUpdatePools() public;
 }
 
 contract ChefLock {
@@ -36,12 +32,12 @@ contract ChefLock {
     
     //---------------------------------------------------------------
     address public manager;
-    IChef public CHEF;
+    MasterChefV2 public CHEF;
     address public pendingOwner;
     enum Functions { transferOwnership, emergencyWithdraw, add, set}
     mapping(Functions => uint) public timelock;
 
-    constructor(address _CHEF) {
+    constructor(address _CHEF) public {
         manager = msg.sender;
         CHEF = IChef(_CHEF);}
 
@@ -66,15 +62,16 @@ contract ChefLock {
     }
     function executeAddPool() external enforceTimelock(Functions.add) {
         CHEF.add(PROPOSED_ADD_POOL_allocPoint, PROPOSED_ADD_POOL_lpToken, false);
-        massUpdatePools();
+        CHEF.massUpdatePools();
     }
 
-    function proposeSetPool(uint256 _pid,uint256 _allocPoint) external onlyManager setTimelock(Functions.set, TIME_BEFORE_SET_POOL_EXECUTION) {
+    function proposeSetPool(uint256 _pid, uint256 _allocPoint) external onlyManager setTimelock(Functions.set, TIME_BEFORE_SET_POOL_EXECUTION) {
         PROPOSED_SET_POOL_allocPoint = _allocPoint;
-        PROPOSED_SET_POOL_pid = _lpToken;
+        PROPOSED_SET_POOL_pid = _pid;
+        
     }
-    function executeSetPool(uint256 _pid,uint256 _allocPoint) external enforceTimelock(Functions.set) {
+    function executeSetPool(uint256 _pid, uint256 _allocPoint) external enforceTimelock(Functions.set) {
         CHEF.set(_pid, _allocPoint, false);
-        massUpdatePools();
+        CHEF.massUpdatePools();
     }
 }
